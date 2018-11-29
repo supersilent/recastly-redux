@@ -1,5 +1,5 @@
 var searchYouTube = ({key, query, max = 5}, callback) => {
-  $.get('https://www.googleapis.com/youtube/v3/search', {
+  let data = $.get('https://www.googleapis.com/youtube/v3/search', {
     part: 'snippet',
     key: key,
     q: query,
@@ -9,7 +9,7 @@ var searchYouTube = ({key, query, max = 5}, callback) => {
   })
     .done(({items}) => {
       if (callback) {
-        callback(items);
+        callback(items);z
       }
     })
     .fail(({responseJSON}) => {
@@ -17,6 +17,7 @@ var searchYouTube = ({key, query, max = 5}, callback) => {
         console.error(err)
       );
     });
-};
+  console.log(data);
+  };
 
 export default searchYouTube;
