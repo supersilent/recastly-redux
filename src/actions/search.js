@@ -7,26 +7,22 @@ import exampleVideoData from "../data/exampleVideoData.js";
 var handleVideoSearch = q => {
   //TODO:  Write an asynchronous action to handle a video search!
 
-  return () => {
-    // let func = items => {
-    //   dispatch(changeVideo(items[0]));
-    //   dispatch(changeVideoList(items));
-    // };
-    // let func = (data) =>{data.items};
+  return dispatch => {
+    // let func = (data) =>{console.log(data); };
     // console.log({ key: YOUTUBE_API_KEY, query: q, max: 5 });
-    // searchYouTube({ key: YOUTUBE_API_KEY, query: q }, func);
+    // searchYouTube( { key: YOUTUBE_API_KEY, query: q }, fusnc);
 
     // let result = $.get("https://www.googleapis.com/youtube/v3/search", {
     //   part: "snippet",
-    //   key: 'AIzaSyCD9P2J_dbes15HGhCaxxEBThIsZnj4fE0',
-    //   q: 'test',
+    //   key: 'AIzaSyA1L5Q2wfAy2Fn_LHonUwmOQDei4HNxgyw',
+    //   query: q,
     //   type: "video",
     // }).done(function(data){console.log(data)});
 
-    // console.log(result);
-    // debugger;
-    //
-    // searchYouTube({key: YOUTUBE_API_KEY, query: q}, func);
+    searchYouTube({ key: YOUTUBE_API_KEY, query: q }, data => {
+      dispatch(changeVideoList(data));
+      dispatch(changeVideo(data[0]));
+    });
   };
 };
 
